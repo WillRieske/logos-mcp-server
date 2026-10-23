@@ -1,0 +1,54 @@
+{
+  "name": "logos-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Logos Bible Software integration",
+  "license": "MIT",
+  "author": "Rob Pecoraro",
+  "contributors": [
+    "Will Rieske"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WillRieske/logos-mcp-server.git"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "logos",
+    "bible",
+    "bible-study",
+    "claude"
+  ],
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "logos-mcp": "dist/index.js",
+    "logos-mcp-diagnose": "dist/cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "node -e \"fs.rmSync('dist',{recursive:true,force:true})\" && tsc",
+    "prepublishOnly": "npm run build",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "diagnose": "node dist/cli.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "better-sqlite3": "^11.8.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}
